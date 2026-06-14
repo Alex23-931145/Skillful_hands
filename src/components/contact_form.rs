@@ -6,16 +6,15 @@ use crate::components::Icon;
 #[component]
 pub fn ContactForm() -> Element {
     let details = [
-        ("phone", "PHONE", "(778) 239 6704"),
-        ("mail", "EMAIL", "hello@skillfulhands.ca"),
-        ("map-pin", "SERVICE AREA", "Kelowna & Vancouver Island"),
+        ("phone", "PHONE", "(778) 239-6704"),
+        ("mail", "EMAIL", "skillfulhandsbc@gmail.com"),
+        ("map-pin", "SERVICE AREA", "Sunshine Coast, BC"),
     ];
     let svc = [
-        "Construction",
-        "Fencing",
-        "Landscape Lighting",
-        "Irrigation & Maintenance",
-        "Civil & Trucking",
+        "Renovations",
+        "Outdoor Living Spaces",
+        "Cottages & Cabins",
+        "Landscaping",
     ];
 
     rsx! {

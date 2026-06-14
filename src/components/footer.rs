@@ -7,11 +7,10 @@ use crate::Route;
 #[component]
 pub fn Footer() -> Element {
     let services = [
-        ("Construction", "construction"),
-        ("Fencing", "fencing"),
-        ("Landscape Lighting", "landscape-lighting"),
-        ("Irrigation", "irrigation-maintenance"),
-        ("Civil & Trucking", "civil-trucking"),
+        ("Renovations", "renovations"),
+        ("Outdoor Living", "outdoor-living"),
+        ("Cottages & Cabins", "cottages-cabins"),
+        ("Landscaping", "landscaping"),
     ];
 
     rsx! {
@@ -22,11 +21,11 @@ pub fn Footer() -> Element {
                     div { class: "footer__brand",
                         Logo {}
                         p { class: "footer__tagline",
-                            "Expert landscaping, irrigation, and fencing across Kelowna and Vancouver Island since 2011."
+                            "Custom construction, renovations, and outdoor living on the Sunshine Coast, BC — 12+ years of Canadian construction experience."
                         }
                         div { class: "footer__socials",
-                            a { class: "footer__social", href: "#", "aria-label": "Facebook", Icon { name: "facebook".to_string() } }
-                            a { class: "footer__social", href: "#", "aria-label": "Instagram", Icon { name: "instagram".to_string() } }
+                            a { class: "footer__social", href: "https://www.facebook.com/share/18u35u7YjK/?mibextid=wwXIfr", target: "_blank", rel: "noopener", "aria-label": "Facebook", Icon { name: "facebook".to_string() } }
+                            a { class: "footer__social", href: "https://www.instagram.com/skillfull_hands_solutions_ltd", target: "_blank", rel: "noopener", "aria-label": "Instagram", Icon { name: "instagram".to_string() } }
                         }
                     }
                     // Services
@@ -42,14 +41,13 @@ pub fn Footer() -> Element {
                         ScrollLink { target: "about", "About Us" }
                         ScrollLink { target: "projects", "Projects" }
                         ScrollLink { target: "testimonials", "Reviews" }
-                        a { href: "#", "Careers" }
                     }
                     // Contact
                     div { class: "footer__col",
                         span { class: "footer__col-title", "CONTACT" }
-                        a { href: "tel:+17782396704", "(778) 239 6704" }
-                        span { "hello@skillfulhands.ca" }
-                        span { "Kelowna & Vancouver Island" }
+                        a { href: "tel:+17782396704", "(778) 239-6704" }
+                        a { href: "mailto:skillfulhandsbc@gmail.com", "skillfulhandsbc@gmail.com" }
+                        span { "Sunshine Coast, BC" }
                     }
                 }
                 div { class: "footer__bottom",

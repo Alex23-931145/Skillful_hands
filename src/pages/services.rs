@@ -24,9 +24,9 @@ fn ServicesHero() -> Element {
             div { class: "wrap",
                 div { class: "svc-hero__inner",
                     span { class: "svc-hero__eyebrow", "SERVICES" }
-                    h1 { class: "svc-hero__title", "Check out our landscaping services" }
+                    h1 { class: "svc-hero__title", "Our construction services" }
                     p { class: "svc-hero__sub",
-                        "Transform your outdoor space with Skillful Hands' expert landscaping services. From custom designs to seasonal maintenance, we create beautiful, functional landscapes tailored to your needs."
+                        "From custom renovations to cottages, decks, and landscaping, Skillful Hands Solutions delivers quality craftsmanship across the Sunshine Coast and surrounding islands of British Columbia."
                     }
                 }
             }
@@ -41,38 +41,31 @@ fn ServicesList() -> Element {
     let rows = [
         (
             "01",
-            "Construction",
-            "construction",
-            "Expertly crafting durable and stunning outdoor spaces with precision, quality materials, and seamless execution — bringing your vision to life with construction landscaping that lasts.",
-            "https://images.unsplash.com/photo-1672627170267-fca17bb54156",
+            "Renovations",
+            "renovations",
+            "Professional renovation services for residential properties — interior, exterior, complete home renovations and restoration, plus custom design and planning.",
+            "https://images.unsplash.com/photo-1761897190222-d222d88851c9",
         ),
         (
             "02",
-            "Fencing",
-            "fencing",
-            "Combining security, privacy, and elegance, our premium fencing solutions are built to last — enhancing your property with durability, style, and expert craftsmanship.",
-            "https://images.unsplash.com/photo-1681853108586-f29b4ef5c0fb",
+            "Outdoor Living Spaces",
+            "outdoor-living",
+            "Custom deck, pergola, and BBQ area construction designed for durability, functionality, relaxation, and outdoor living.",
+            "https://images.unsplash.com/photo-1735657438299-7d543a1b8cc2",
         ),
         (
             "03",
-            "Landscape Lighting",
-            "landscape-lighting",
-            "Transform your property after dark with professional landscape lighting — stunning accent, path, hardscape, and underwater lighting from industry-leading brands.",
-            "https://images.unsplash.com/photo-1707189856923-46dd41ea2bdc",
+            "Cottages & Cabins",
+            "cottages-cabins",
+            "Custom cottages, cabins, guest houses, and other unique custom-built structures, built to last in any setting.",
+            "https://images.unsplash.com/photo-1604609165742-58e1b9cf0457",
         ),
         (
             "04",
-            "Irrigation & Maintenance",
-            "irrigation-maintenance",
-            "Keep your outdoor space pristine year-round with expert maintenance — lawn care, seasonal clean-ups, and customized programs to enhance beauty and value effortlessly.",
-            "https://images.unsplash.com/photo-1779888793240-898dec4b9c08",
-        ),
-        (
-            "05",
-            "Civil & Trucking",
-            "civil-trucking",
-            "Ensure your project runs smoothly with expert civil and trucking services — excavation, earthmoving, drainage solutions, and commercial transport for all your construction needs.",
-            "https://images.unsplash.com/photo-1630288214173-a119cf823388",
+            "Landscaping",
+            "landscaping",
+            "Landscaping and property improvement services for residential and waterfront properties.",
+            "https://images.unsplash.com/photo-1621385236063-8544bb086619",
         ),
     ];
     rsx! {
@@ -116,7 +109,7 @@ fn ClosingCta() -> Element {
             div { class: "wrap",
                 div { class: "svc-cta__inner",
                     h2 { class: "svc-cta__title",
-                        "Looking for a qualified, reliable and honest landscaping team?"
+                        "Looking for a qualified, reliable, and honest construction team?"
                     }
                     ScrollLink { target: "contact", class: "btn btn--light", "Contact now" }
                 }

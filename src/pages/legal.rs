@@ -30,7 +30,7 @@ pub fn Privacy() -> Element {
         ),
         (
             "Contact us",
-            "Questions about this policy? Reach us at hello@skillfulhands.ca or (778) 239 6704. Skillful Hands Solutions Ltd., serving Kelowna & Vancouver Island, BC.",
+            "Questions about this policy? Reach us at skillfulhandsbc@gmail.com or (778) 239-6704. Skillful Hands Solutions Ltd., serving the Sunshine Coast, BC.",
         ),
     ];
 
@@ -75,7 +75,7 @@ pub fn Terms() -> Element {
         ),
         (
             "Contact us",
-            "Questions about these Terms? Reach us at hello@skillfulhands.ca or (778) 239 6704. Skillful Hands Solutions Ltd., serving Kelowna & Vancouver Island, BC.",
+            "Questions about these Terms? Reach us at skillfulhandsbc@gmail.com or (778) 239-6704. Skillful Hands Solutions Ltd., serving the Sunshine Coast, BC.",
         ),
     ];
 

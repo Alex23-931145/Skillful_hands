@@ -4,7 +4,7 @@ use crate::components::{ContactForm, Icon, ScrollLink};
 use crate::Route;
 
 /// Детальная страница услуги (Pencil DOYUn/Ir8HP/MJ0tT/ArMJd/sgGfF).
-/// Один параметрический шаблон + данные на 5 услуг, выбор по slug.
+/// Один параметрический шаблон + данные на 4 услуги, выбор по slug.
 #[component]
 pub fn ServiceDetail(slug: String) -> Element {
     let data = service_by_slug(&slug);
@@ -24,7 +24,7 @@ pub fn ServiceDetail(slug: String) -> Element {
                         p { class: "sd-hero__intro", "{data.intro}" }
                         div { class: "sd-hero__btns",
                             ScrollLink { target: "contact", class: "btn", "Get a free quote" }
-                            a { href: "tel:+17782396704", class: "btn btn--outline", "Call (778) 239 6704" }
+                            a { href: "tel:+17782396704", class: "btn btn--outline", "Call (778) 239-6704" }
                         }
                     }
                     div {
@@ -135,12 +135,12 @@ struct ServiceData {
     closing_title: &'static str,
 }
 
-// Шаги процесса одинаковы на всех 5 услугах — общий набор.
+// Шаги процесса одинаковы на всех услугах — общий набор.
 const PROCESS_STEPS: [(&str, &str, &str); 4] = [
-    ("01", "Consultation", "We visit your property, listen to your goals, and assess the space."),
-    ("02", "Plan & quote", "You get a clear design direction and a transparent, itemized quote."),
-    ("03", "We build", "Our crew gets to work — tidy, on schedule, and to spec."),
-    ("04", "Walkthrough", "We review every detail together and make sure you're thrilled."),
+    ("01", "Consultation", "We visit your property, listen to your goals, and assess the site."),
+    ("02", "Design & Planning", "We map out a clear plan, design direction, and a transparent quote."),
+    ("03", "Construction", "Our crew builds to spec — tidy, on schedule, and to a high standard."),
+    ("04", "Project Completion", "We review every detail with you and hand over a result you're proud of."),
 ];
 
 fn feature(icon: &'static str, title: &'static str, desc: &'static str) -> Feature {
@@ -157,121 +157,98 @@ fn photo(id: &str) -> String {
 
 fn service_by_slug(slug: &str) -> ServiceData {
     match slug {
-        "fencing" => fencing(),
-        "landscape-lighting" => landscape_lighting(),
-        "irrigation-maintenance" => irrigation_maintenance(),
-        "civil-trucking" => civil_trucking(),
-        // construction + неизвестный slug → первая услуга
-        _ => construction(),
+        "outdoor-living" => outdoor_living(),
+        "cottages-cabins" => cottages_cabins(),
+        "landscaping" => landscaping(),
+        // renovations + неизвестный slug → первая услуга
+        _ => renovations(),
     }
 }
 
-fn construction() -> ServiceData {
+fn renovations() -> ServiceData {
     ServiceData {
-        name: "Construction",
-        intro: "Expertly crafting durable and stunning outdoor spaces with precision, quality materials, and seamless execution — built to last for years to come.",
+        name: "Renovations",
+        intro: "Professional renovation services for residential properties — interior, exterior, and complete home renovations and restoration, backed by custom design and planning.",
         hero_img: hero("photo-1659468551190-6aeeb5b5cfed"),
-        features_title: "Everything that goes into a lasting build",
+        features_title: "Everything a quality renovation needs",
         features: vec![
-            feature("ruler", "Site assessment & design", "We survey grades, drainage, and soil before a single stake goes in."),
-            feature("layers", "Quality materials", "Premium stone, concrete, and timber sourced to last decades."),
-            feature("hammer", "Expert execution", "Seasoned crews who build to spec and finish on schedule."),
-            feature("sparkles", "Clean handover", "A spotless site and a walkthrough so you know exactly what you got."),
+            feature("ruler", "Custom design & planning", "We plan layout, grades, and finishes before any work begins."),
+            feature("hammer", "Interior renovations", "Kitchens, baths, flooring, and full interior refreshes."),
+            feature("layers", "Exterior renovations", "Siding, decks, facades, and weather-ready exterior work."),
+            feature("sparkles", "Complete restoration", "Full home renovations and restoration, done right."),
         ],
-        gallery_title: "Recent construction projects",
+        gallery_title: "Recent renovation projects",
         gallery: vec![
             photo("photo-1586519822803-a53728428437"),
             photo("photo-1769690093863-4f2a3fd17dd2"),
             photo("photo-1654466505733-47eb25188942"),
         ],
-        closing_title: "Ready to start your construction project?",
+        closing_title: "Ready to start your renovation project?",
     }
 }
 
-fn fencing() -> ServiceData {
+fn outdoor_living() -> ServiceData {
     ServiceData {
-        name: "Fencing",
-        intro: "Combining security, privacy, and elegance, our premium fencing solutions are built to last — enhancing your property with durability, style, and expert craftsmanship.",
+        name: "Outdoor Living Spaces",
+        intro: "Custom decks, pergolas, and BBQ areas designed for durability, functionality, relaxation, and year-round outdoor living.",
         hero_img: hero("photo-1695550056778-de79c8cd909e"),
-        features_title: "Fencing done right, down to the post",
+        features_title: "Built for how you live outdoors",
         features: vec![
-            feature("ruler", "Custom design", "Styles and heights tailored to your property and bylaws."),
-            feature("layers", "Premium materials", "Cedar, vinyl, aluminum, and chain-link built for our climate."),
-            feature("hammer", "Solid installation", "Properly set posts and footings that won't shift or lean."),
-            feature("shield-check", "Privacy & security", "Enclosures that keep kids and pets in, and prying eyes out."),
+            feature("hammer", "Custom decks", "Durable, beautiful decks built to fit your space."),
+            feature("trees", "Pergolas & shade", "Pergolas and shade structures for comfort and style."),
+            feature("sparkles", "BBQ & entertaining", "Built-in BBQ and entertaining areas for hosting."),
+            feature("shield-check", "Built to last", "Quality materials that stand up to the coast climate."),
         ],
-        gallery_title: "Recent fencing projects",
+        gallery_title: "Recent outdoor living projects",
         gallery: vec![
             photo("photo-1772682185743-e9030b833de4"),
             photo("photo-1762608676367-e0016a4f4950"),
             photo("photo-1643712153591-624535612928"),
         ],
-        closing_title: "Ready to fence in your yard?",
+        closing_title: "Ready to build your outdoor living space?",
     }
 }
 
-fn landscape_lighting() -> ServiceData {
+fn cottages_cabins() -> ServiceData {
     ServiceData {
-        name: "Landscape Lighting",
-        intro: "Transform your property after dark with professional landscape lighting — stunning accent, path, hardscape, and underwater lighting from industry-leading brands.",
+        name: "Cottages & Cabins",
+        intro: "Custom cottages, cabins, guest houses, and other unique custom-built structures — including remote and hard-to-access sites.",
         hero_img: hero("photo-1765042993443-671465685f8f"),
-        features_title: "Light that flatters every feature",
+        features_title: "Custom structures, built anywhere",
         features: vec![
-            feature("lightbulb", "Accent lighting", "Highlight trees, walls, and architecture with warm, even light."),
-            feature("route", "Path & step lighting", "Safe, inviting walkways that glow without glare."),
-            feature("waves", "Water features", "Bring pools, ponds, and fountains to life after sunset."),
-            feature("settings", "Smart controls", "Dimming, zones, and timers you run from your phone."),
+            feature("house", "Cottages & cabins", "Custom cottages and cabins designed around your vision."),
+            feature("ruler", "Guest houses", "Comfortable guest houses and bunkies."),
+            feature("truck", "Remote-site capable", "Experienced with logistics in remote, hard-to-access locations."),
+            feature("sparkles", "Custom structures", "One-of-a-kind custom-built structures."),
         ],
-        gallery_title: "Recent lighting projects",
+        gallery_title: "Recent cottage & cabin projects",
         gallery: vec![
             photo("photo-1766491794481-cd7d8f9aaf4d"),
             photo("photo-1731452716638-58b1699b2af7"),
             photo("photo-1762275167395-e50462b6595c"),
         ],
-        closing_title: "Ready to light up your nights?",
+        closing_title: "Ready to build your cottage or cabin?",
     }
 }
 
-fn irrigation_maintenance() -> ServiceData {
+fn landscaping() -> ServiceData {
     ServiceData {
-        name: "Irrigation & Maintenance",
-        intro: "Keep your outdoor space pristine year-round with expert maintenance — lawn care, seasonal clean-ups, and customized irrigation programs that enhance beauty and value effortlessly.",
+        name: "Landscaping",
+        intro: "Landscaping and property improvement services for residential and waterfront properties across the Sunshine Coast.",
         hero_img: hero("photo-1687827900884-131e513ba9b3"),
-        features_title: "A healthy yard, handled for you",
+        features_title: "Property improvement, inside out",
         features: vec![
-            feature("droplets", "Smart irrigation", "Efficient systems that water the right zones at the right time."),
-            feature("scissors", "Lawn & garden care", "Mowing, pruning, weeding, and feeding on a regular schedule."),
-            feature("leaf", "Seasonal clean-ups", "Spring wake-ups and fall prep to protect your investment."),
-            feature("calendar-check", "Custom programs", "Tailored plans that fit your yard and your budget."),
+            feature("leaf", "Residential landscaping", "Yards, plantings, and grounds that elevate your property."),
+            feature("droplets", "Waterfront work", "Improvement projects for waterfront and shoreline properties."),
+            feature("ruler", "Site & grounds", "Grading, hardscape, and site improvement."),
+            feature("sparkles", "Property improvement", "Finishing touches that boost value and enjoyment."),
         ],
-        gallery_title: "Recent maintenance projects",
+        gallery_title: "Recent landscaping projects",
         gallery: vec![
             photo("photo-1689032402083-38b2b911f2ab"),
             photo("photo-1713301610475-7fff48ac53a2"),
             photo("photo-1761867660739-cdafe1141021"),
         ],
-        closing_title: "Ready for a yard that stays pristine?",
-    }
-}
-
-fn civil_trucking() -> ServiceData {
-    ServiceData {
-        name: "Civil & Trucking",
-        intro: "Ensure your project runs smoothly with expert civil and trucking services — excavation, earthmoving, drainage solutions, and commercial transport to meet all your construction needs.",
-        hero_img: hero("photo-1598067390123-9e3deec02c17"),
-        features_title: "Heavy lifting, handled in-house",
-        features: vec![
-            feature("truck", "Excavation & earthmoving", "Site prep, grading, and digging with the right machines."),
-            feature("layers", "Drainage solutions", "Grading and drains that move water away from structures."),
-            feature("boxes", "Material hauling", "Reliable transport of soil, gravel, and aggregate."),
-            feature("hard-hat", "Commercial transport", "Permitted, insured trucking for jobs of any scale."),
-        ],
-        gallery_title: "Recent civil projects",
-        gallery: vec![
-            photo("photo-1780054984787-b7e47746f5e0"),
-            photo("photo-1752342625676-44566a11be8b"),
-            photo("photo-1760045788252-d8d386ea1d12"),
-        ],
-        closing_title: "Ready to break ground?",
+        closing_title: "Ready to transform your property?",
     }
 }
