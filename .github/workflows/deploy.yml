@@ -1,0 +1,93 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Не запускать два деплоя одновременно; новый пуш отменяет предыдущий билд.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Rust (wasm target)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Cache Cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: dioxus-pages
+
+      - name: Install cargo-binstall
+        uses: cargo-bins/cargo-binstall@main
+
+      - name: Install Dioxus CLI
+        shell: bash
+        run: |
+          set -euo pipefail
+          cargo binstall dioxus-cli --no-confirm --version "=0.7.6" --force \
+            || cargo install dioxus-cli --version 0.7.6 --locked
+          dx --version
+
+      # Project-page хостинг: gaponovalexey.github.io/Skillful_hands/ — все ассеты
+      # (wasm/js/css + asset!()) префиксятся base-path'ом, иначе грузятся с корня и 404.
+      - name: Build web release
+        run: dx build --release --base-path Skillful_hands
+
+      - name: Locate build output
+        id: out
+        shell: bash
+        run: |
+          set -euo pipefail
+          DIR="$(find target/dx -type d -name public | head -1)"
+          if [ -z "$DIR" ] || [ ! -d "$DIR" ]; then
+            echo "Build output (public dir) not found:"; find target/dx -maxdepth 4 -type d; exit 1
+          fi
+          echo "dir=$DIR" >> "$GITHUB_OUTPUT"
+          echo "Output: $DIR"; ls -la "$DIR"
+
+      # SPA на Pages: 404.html = копия index.html (любой под-роут отдаёт приложение,
+      # дальше клиентский роутер). .nojekyll — чтобы Jekyll не ломал wasm/MIME.
+      - name: SPA 404 fallback + disable Jekyll
+        shell: bash
+        run: |
+          cp "${{ steps.out.outputs.dir }}/index.html" "${{ steps.out.outputs.dir }}/404.html"
+          touch "${{ steps.out.outputs.dir }}/.nojekyll"
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ steps.out.outputs.dir }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -169,7 +169,7 @@ fn renovations() -> ServiceData {
     ServiceData {
         name: "Renovations",
         intro: "Professional renovation services for residential properties — interior, exterior, and complete home renovations and restoration, backed by custom design and planning.",
-        hero_img: hero("photo-1659468551190-6aeeb5b5cfed"),
+        hero_img: hero("photo-1761897190222-d222d88851c9"),
         features_title: "Everything a quality renovation needs",
         features: vec![
             feature("ruler", "Custom design & planning", "We plan layout, grades, and finishes before any work begins."),
@@ -179,9 +179,9 @@ fn renovations() -> ServiceData {
         ],
         gallery_title: "Recent renovation projects",
         gallery: vec![
-            photo("photo-1586519822803-a53728428437"),
-            photo("photo-1769690093863-4f2a3fd17dd2"),
-            photo("photo-1654466505733-47eb25188942"),
+            photo("photo-1717292067908-5e36d903c8b0"),
+            photo("photo-1604609165742-58e1b9cf0457"),
+            photo("photo-1779812773030-07c2c1f16e66"),
         ],
         closing_title: "Ready to start your renovation project?",
     }
@@ -191,7 +191,7 @@ fn outdoor_living() -> ServiceData {
     ServiceData {
         name: "Outdoor Living Spaces",
         intro: "Custom decks, pergolas, and BBQ areas designed for durability, functionality, relaxation, and year-round outdoor living.",
-        hero_img: hero("photo-1695550056778-de79c8cd909e"),
+        hero_img: hero("photo-1735657438299-7d543a1b8cc2"),
         features_title: "Built for how you live outdoors",
         features: vec![
             feature("hammer", "Custom decks", "Durable, beautiful decks built to fit your space."),
@@ -201,9 +201,9 @@ fn outdoor_living() -> ServiceData {
         ],
         gallery_title: "Recent outdoor living projects",
         gallery: vec![
-            photo("photo-1772682185743-e9030b833de4"),
-            photo("photo-1762608676367-e0016a4f4950"),
-            photo("photo-1643712153591-624535612928"),
+            photo("photo-1688604693147-ff99ce13e291"),
+            photo("photo-1604609165678-096d20fab1ad"),
+            photo("photo-1621385236063-8544bb086619"),
         ],
         closing_title: "Ready to build your outdoor living space?",
     }
@@ -213,7 +213,7 @@ fn cottages_cabins() -> ServiceData {
     ServiceData {
         name: "Cottages & Cabins",
         intro: "Custom cottages, cabins, guest houses, and other unique custom-built structures — including remote and hard-to-access sites.",
-        hero_img: hero("photo-1765042993443-671465685f8f"),
+        hero_img: hero("photo-1604609165678-096d20fab1ad"),
         features_title: "Custom structures, built anywhere",
         features: vec![
             feature("house", "Cottages & cabins", "Custom cottages and cabins designed around your vision."),
@@ -223,9 +223,9 @@ fn cottages_cabins() -> ServiceData {
         ],
         gallery_title: "Recent cottage & cabin projects",
         gallery: vec![
-            photo("photo-1766491794481-cd7d8f9aaf4d"),
-            photo("photo-1731452716638-58b1699b2af7"),
-            photo("photo-1762275167395-e50462b6595c"),
+            photo("photo-1619688137428-851529e61a0f"),
+            photo("photo-1604609165742-58e1b9cf0457"),
+            photo("photo-1717292067908-5e36d903c8b0"),
         ],
         closing_title: "Ready to build your cottage or cabin?",
     }
@@ -235,7 +235,7 @@ fn landscaping() -> ServiceData {
     ServiceData {
         name: "Landscaping",
         intro: "Landscaping and property improvement services for residential and waterfront properties across the Sunshine Coast.",
-        hero_img: hero("photo-1687827900884-131e513ba9b3"),
+        hero_img: hero("photo-1717292067908-5e36d903c8b0"),
         features_title: "Property improvement, inside out",
         features: vec![
             feature("leaf", "Residential landscaping", "Yards, plantings, and grounds that elevate your property."),
@@ -245,9 +245,9 @@ fn landscaping() -> ServiceData {
         ],
         gallery_title: "Recent landscaping projects",
         gallery: vec![
-            photo("photo-1689032402083-38b2b911f2ab"),
-            photo("photo-1713301610475-7fff48ac53a2"),
-            photo("photo-1761867660739-cdafe1141021"),
+            photo("photo-1621385236063-8544bb086619"),
+            photo("photo-1779812773030-07c2c1f16e66"),
+            photo("photo-1619688137428-851529e61a0f"),
         ],
         closing_title: "Ready to transform your property?",
     }

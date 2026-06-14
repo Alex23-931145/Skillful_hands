@@ -11,6 +11,8 @@ const HOME_CSS: Asset = asset!("/assets/css/home.css");
 const SERVICES_CSS: Asset = asset!("/assets/css/services.css");
 const SERVICE_CSS: Asset = asset!("/assets/css/service.css");
 const LEGAL_CSS: Asset = asset!("/assets/css/legal.css");
+// Favicon через asset!() — base-path-safe на project-page /Skillful_hands/.
+const FAVICON: Asset = asset!("/assets/img/logo.png");
 
 /// Маршруты сайта. Layout оборачивает все страницы шапкой/подвалом/cookie.
 #[derive(Routable, Clone, PartialEq)]
@@ -31,6 +33,7 @@ pub enum Route {
 #[component]
 pub fn App() -> Element {
     rsx! {
+        document::Link { rel: "icon", r#type: "image/png", href: FAVICON }
         document::Stylesheet { href: MAIN_CSS }
         document::Stylesheet { href: HOME_CSS }
         document::Stylesheet { href: SERVICES_CSS }

@@ -3,6 +3,11 @@ use dioxus::prelude::*;
 use crate::components::{ContactForm, Icon, ReviewCard, ScrollLink, ServiceCard};
 use crate::Route;
 
+// Hero-фон — реальное фото объекта. Через asset!(), чтобы base_path
+// (GitHub Pages project-page /Skillful_hands/) корректно префиксил путь,
+// а не грузил с корня сайта (иначе 404 на под-пути).
+const HERO_IMG: Asset = asset!("/assets/img/hero.jpg");
+
 /// Лендинг (Pencil C5tVy «Sweet Yards Landing» → ребренд Skillful Hands).
 #[component]
 pub fn Home() -> Element {
@@ -24,7 +29,9 @@ pub fn Home() -> Element {
 #[component]
 fn Hero() -> Element {
     rsx! {
-        section { class: "hero",
+        section {
+            class: "hero",
+            style: "background-image: linear-gradient(180deg, rgba(10,9,7,0.15) 0%, rgba(10,9,7,0.34) 52%, rgba(10,9,7,0.95) 100%), url({HERO_IMG});",
             div { class: "hero__inner",
                 div { class: "hero__eyebrow",
                     Icon { name: "map-pin".to_string(), size: 14 }
@@ -140,7 +147,7 @@ fn ServicesSection() -> Element {
                         div {
                             h3 { class: "service-cta__title", "Not sure where to start?" }
                             p { class: "service-cta__desc",
-                                "Tell us about your yard and we'll map out a plan that fits your space and budget."
+                                "Tell us about your project and we'll map out a plan that fits your space and budget."
                             }
                         }
                         ScrollLink { target: "contact", class: "btn service-cta__btn",
@@ -245,8 +252,8 @@ fn Owners() -> Element {
 #[component]
 fn Testimonials() -> Element {
     let reviews = [
-        ("James R.", "Sechelt, BC", "The team transformed our backyard beyond what we imagined. Professional, punctual, and the quality is outstanding."),
-        ("Megan T.", "Gibsons, BC", "From irrigation to fencing, everything was done right the first time. We finally use our yard every single day."),
+        ("James R.", "Sechelt, BC", "They handled our full home renovation start to finish. Professional, on time, and the craftsmanship is outstanding."),
+        ("Megan T.", "Gibsons, BC", "Our new deck and outdoor living space turned out beautifully — done right the first time. We use it every single day."),
         ("David & Lin", "Roberts Creek, BC", "Honest pricing and incredible attention to detail. Skillful Hands is the only crew we'll call from now on."),
     ];
     rsx! {
