@@ -44,10 +44,12 @@ jobs:
             || cargo install dioxus-cli --version 0.7.6 --locked
           dx --version
 
-      # Project-page хостинг: gaponovalexey.github.io/Skillful_hands/ — все ассеты
-      # (wasm/js/css + asset!()) префиксятся base-path'ом, иначе грузятся с корня и 404.
+      # Кастомный домен (skillfulhandssolutions.ca) обслуживается с корня —
+      # base-path НЕ нужен (иначе ассеты искались бы по /Skillful_hands/ → 404).
+      # Файл CNAME лежит в assets/ (public_dir) → копируется в корень артефакта,
+      # GitHub Pages по нему привязывает домен.
       - name: Build web release
-        run: dx build --release --base-path Skillful_hands
+        run: dx build --release
 
       - name: Locate build output
         id: out
