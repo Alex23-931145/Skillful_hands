@@ -10,6 +10,8 @@ use crate::Route;
 const HERO_IMG: Asset = asset!("/assets/img/hero.jpg");
 // Фон CTA-баннера — реальный объект (через asset!() ради base-path на GitHub Pages).
 const CTA_IMG: Asset = asset!("/assets/img/foto_web/island-retreat-exterior-after-07.jpg");
+// Профиль компании в Google Maps (живые отзывы). Бейдж и CTA ведут сюда.
+const GOOGLE_REVIEWS_URL: &str = "https://maps.app.goo.gl/9NdFEvng8LDeybFVA";
 
 /// Лендинг (Pencil C5tVy «Sweet Yards Landing» → ребренд Skillful Hands).
 #[component]
@@ -257,7 +259,12 @@ fn Testimonials() -> Element {
                         span { class: "sec-eyebrow", "WHAT CLIENTS SAY" }
                         h2 { class: "sec-title", "Loved by homeowners on the Coast" }
                     }
-                    div { class: "google-badge",
+                    a {
+                        class: "google-badge",
+                        href: GOOGLE_REVIEWS_URL,
+                        target: "_blank",
+                        rel: "noopener",
+                        "aria-label": "Read Skillful Hands reviews on Google",
                         Icon { name: "star".to_string(), size: 18 }
                         span { "5.0 on Google Reviews" }
                     }
@@ -271,6 +278,14 @@ fn Testimonials() -> Element {
                             quote: quote.to_string(),
                         }
                     }
+                }
+                a {
+                    class: "reviews-cta",
+                    href: GOOGLE_REVIEWS_URL,
+                    target: "_blank",
+                    rel: "noopener",
+                    "See all reviews on Google"
+                    Icon { name: "arrow-up-right".to_string(), size: 16 }
                 }
             }
         }

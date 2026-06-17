@@ -295,7 +295,9 @@ button { font: inherit; color: inherit; border: none; background: none; cursor: 
 .review-card__author { display: flex; align-items: center; gap: 12px; }
 .review-card__avatar {
   width: 44px; height: 44px; border-radius: 100px; flex: none;
-  background: var(--sand); object-fit: cover;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--leaf); color: var(--forest);
+  font-size: 15px; font-weight: 700; letter-spacing: 0.5px;
 }
 .review-card__name { font-size: 15px; font-weight: 600; color: var(--text-primary); }
 .review-card__role { font-size: 13px; color: var(--text-secondary); }

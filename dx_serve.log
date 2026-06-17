@@ -1,4 +1,4 @@
-  0.38s  INFO -----------------------------------------------------------------
+  0.37s  INFO -----------------------------------------------------------------
                 Serving your app: skillful_hands! 🚀
                 • Press [33m`ctrl+c`[0m to exit the server
                 • Press [33m`r`[0m to rebuild the app
@@ -7,4 +7,4 @@
                 • Press [33m`/`[0m for more commands and shortcuts
                 Learn more at [34mhttps://dioxuslabs.com/learn/0.7/getting_started[0m
                ----------------------------------------------------------------
-  3.72s  INFO Build completed successfully in [33m3.42s[0m, launching app! 💫
+  3.57s  INFO Build completed successfully in [33m3.27s[0m, launching app! 💫

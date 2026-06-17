@@ -136,6 +136,20 @@
   font-size: 14px; font-weight: 600; color: var(--text-primary);
 }
 .google-badge svg { width: 18px; height: 18px; color: #e0a23b; fill: #e0a23b; }
+.google-badge { transition: border-color .18s ease, background .18s ease; }
+a.google-badge:hover { border-color: var(--leaf); background: #ffffff08; }
+
+/* CTA под отзывами → профиль в Google Maps */
+.reviews-cta {
+  align-self: center;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 24px; border-radius: 100px;
+  background: var(--leaf); color: var(--forest);
+  font-size: 15px; font-weight: 600;
+  transition: background .18s ease;
+}
+.reviews-cta:hover { background: var(--leaf-soft); }
+.reviews-cta svg { width: 16px; height: 16px; }
 
 /* ---------- CTA band (GeAR4) ---------- */
 .cta-band {
