@@ -21,18 +21,21 @@ pub fn Header() -> Element {
                         span { class: "logo__sub", "SOLUTIONS LTD." }
                     }
                 }
-                nav { class: "nav",
-                    Link { to: Route::Home {}, onclick: close, "Home" }
-                    Link { to: Route::Services {}, onclick: close, "Services" }
-                    ScrollLink { target: "projects", onnav: close, "Projects" }
-                    ScrollLink { target: "about", onnav: close, "About Us" }
+                div { class: "header__menu",
+                    nav { class: "nav",
+                        Link { to: Route::Home {}, onclick: close, "Home" }
+                        Link { to: Route::Services {}, onclick: close, "Services" }
+                        ScrollLink { target: "projects", onnav: close, "Projects" }
+                        ScrollLink { target: "about", onnav: close, "About Us" }
+                    }
+                    ScrollLink { target: "contact", class: "btn header__cta", onnav: close, "Contact Now" }
                 }
-                ScrollLink { target: "contact", class: "btn header__cta", onnav: close, "Contact Now" }
                 button {
                     class: "header__burger",
                     "aria-label": "Menu",
+                    "aria-expanded": if open() { "true" } else { "false" },
                     onclick: move |_| open.set(!open()),
-                    Icon { name: "menu".to_string(), size: 22 }
+                    Icon { name: if open() { "close".to_string() } else { "menu".to_string() }, size: 22 }
                 }
             }
         }

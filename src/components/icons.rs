@@ -33,6 +33,7 @@ fn icon_inner(name: &str) -> &'static str {
         "chevron-right" => r#"<path d="m9 18 6-6-6-6"/>"#,
         "check" => r#"<path d="M20 6 9 17l-5-5"/>"#,
         "menu" => r#"<line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/>"#,
+        "close" => r#"<path d="M18 6 6 18"/><path d="m6 6 12 12"/>"#,
         "facebook" => r#"<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>"#,
         "instagram" => r#"<rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>"#,
         "cookie" => r#"<path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/>"#,
