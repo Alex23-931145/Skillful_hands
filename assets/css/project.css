@@ -41,14 +41,15 @@
 .pd-ba__grid { display: flex; flex-direction: column; gap: 44px; }
 .pd-ba__pair { display: flex; flex-direction: column; gap: 14px; }
 .pd-ba__label { font-size: 15px; font-weight: 600; letter-spacing: 0.5px; color: var(--text-on-dark); }
-.pd-ba__images { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.pd-ba__images { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
 .pd-ba__shot {
   position: relative;
-  aspect-ratio: 4 / 3;
   border-radius: var(--radius-lg);
-  background-size: cover; background-position: center;
+  overflow: hidden;
   background-color: var(--sand);
 }
+/* Фото целиком, без обрезки — натуральные пропорции. */
+.pd-ba__img { display: block; width: 100%; height: auto; }
 .pd-ba__badge {
   position: absolute; top: 14px; left: 14px;
   padding: 6px 14px; border-radius: 100px;
@@ -57,19 +58,17 @@
 .pd-ba__badge--before { background: #0e160fcc; color: var(--text-on-dark); border: 1px solid #ffffff33; }
 .pd-ba__badge--after { background: var(--leaf); color: var(--forest); }
 
-/* ---------- E. Gallery (гибкая сетка под много фото) ---------- */
+/* ---------- E. Gallery (кладка/masonry — фото целиком, без обрезки) ---------- */
 .pd-gallery { width: 100%; padding: 88px var(--pad-x); background: var(--bg); }
 .pd-gallery__inner { display: flex; flex-direction: column; gap: 36px; }
-.pd-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-}
+.pd-gallery-grid { columns: 3; column-gap: 20px; }
 .pd-photo {
-  aspect-ratio: 4 / 3;
+  width: 100%;
+  margin: 0 0 20px;
+  display: block;
   border-radius: var(--radius-lg);
-  background-size: cover; background-position: center;
   background-color: var(--sand);
+  break-inside: avoid;
 }
 
 /* ---------- F. Related services (кросс-ссылки) ---------- */
@@ -84,7 +83,7 @@
   .pd-gallery { padding-block: 64px; }
   .pd-feature-list { grid-template-columns: 1fr; }
   .pd-prose p { font-size: 16px; }
-  .pd-gallery-grid { grid-template-columns: 1fr; }
+  .pd-gallery-grid { columns: 2; }
   .pd-ba,
   .pd-overview,
   .pd-features,
@@ -92,4 +91,5 @@
 }
 @media (max-width: 560px) {
   .pd-ba__images { grid-template-columns: 1fr; }
+  .pd-gallery-grid { columns: 1; }
 }

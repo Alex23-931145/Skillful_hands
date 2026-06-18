@@ -113,8 +113,7 @@ fn Projects() -> Element {
 fn ServicesSection() -> Element {
     let services = [
         ("hammer", "Renovations", "Interior, exterior, and complete home renovations and restoration — with custom design and planning.", "renovations"),
-        ("trees", "Outdoor Living Spaces", "Custom decks, pergolas, and BBQ areas built for durability, function, and relaxed outdoor living.", "outdoor-living"),
-        ("house", "Cottages & Cabins", "Custom cottages, cabins, guest houses, and other unique custom-built structures.", "cottages-cabins"),
+        ("trees", "Decks, BBQ & Pergola", "Custom decks, BBQ areas, pergolas, and patio zones built for durability, function, and relaxed outdoor living.", "outdoor-living"),
         ("leaf", "Landscaping", "Landscaping and property improvement for residential and waterfront properties.", "landscaping"),
     ];
     rsx! {

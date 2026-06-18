@@ -49,24 +49,17 @@ fn ServicesList() -> Element {
         ),
         (
             "02",
-            "Outdoor Living Spaces",
+            "Decks, BBQ & Pergola",
             "outdoor-living",
-            "Custom deck, pergola, and BBQ area construction designed for durability, functionality, relaxation, and outdoor living.",
+            "Custom decks, BBQ areas, pergolas, and patio zones — built for durability, function, and relaxed outdoor living on the coast.",
             asset!("/assets/img/foto_web/bbq-area-after-06.jpg").to_string(),
         ),
         (
             "03",
-            "Cottages & Cabins",
-            "cottages-cabins",
-            "Custom cottages, cabins, guest houses, and other unique custom-built structures, built to last in any setting.",
-            asset!("/assets/img/foto_web/island-retreat-exterior-after-03.jpg").to_string(),
-        ),
-        (
-            "04",
             "Landscaping",
             "landscaping",
-            "Landscaping and property improvement services for residential and waterfront properties.",
-            asset!("/assets/img/foto_web/island-retreat-exterior-after-09.jpg").to_string(),
+            "Landscaping and property improvement for residential and waterfront properties. New project photos coming soon.",
+            asset!("/assets/img/foto_web/scenery-01.jpg").to_string(),
         ),
     ];
     rsx! {

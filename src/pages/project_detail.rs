@@ -91,14 +91,12 @@ pub fn ProjectDetail(slug: String) -> Element {
                                 div { key: "{c.label}", class: "pd-ba__pair",
                                     span { class: "pd-ba__label", "{c.label}" }
                                     div { class: "pd-ba__images",
-                                        div {
-                                            class: "pd-ba__shot",
-                                            style: "background-image:url('{c.before}')",
+                                        div { class: "pd-ba__shot",
+                                            img { class: "pd-ba__img", src: "{c.before}", alt: "{c.label} — before", loading: "lazy" }
                                             span { class: "pd-ba__badge pd-ba__badge--before", "Before" }
                                         }
-                                        div {
-                                            class: "pd-ba__shot",
-                                            style: "background-image:url('{c.after}')",
+                                        div { class: "pd-ba__shot",
+                                            img { class: "pd-ba__img", src: "{c.after}", alt: "{c.label} — after", loading: "lazy" }
                                             span { class: "pd-ba__badge pd-ba__badge--after", "After" }
                                         }
                                     }
@@ -115,10 +113,12 @@ pub fn ProjectDetail(slug: String) -> Element {
                     h2 { class: "sd-h2", "Project gallery" }
                     div { class: "pd-gallery-grid",
                         for img in data.gallery.iter() {
-                            div {
+                            img {
                                 key: "{img}",
                                 class: "pd-photo",
-                                style: "background-image:url('{img}')",
+                                src: "{img}",
+                                alt: "{data.name}",
+                                loading: "lazy",
                             }
                         }
                     }
@@ -331,7 +331,7 @@ fn waterfront_bbq() -> ProjectData {
         ],
         location: "Remote Island, Sunshine Coast, British Columbia",
         completed_by: "Skillful Hands Solutions LTD",
-        related_services: vec![("outdoor-living", "Outdoor Living Spaces")],
+        related_services: vec![("outdoor-living", "Decks, BBQ & Pergola")],
     }
 }
 
@@ -417,8 +417,7 @@ fn island_retreat() -> ProjectData {
         completed_by: "Skillful Hands Solutions LTD",
         related_services: vec![
             ("renovations", "Renovations"),
-            ("cottages-cabins", "Cottages & Cabins"),
-            ("outdoor-living", "Outdoor Living Spaces"),
+            ("outdoor-living", "Decks, BBQ & Pergola"),
         ],
     }
 }

@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::components::{Icon, ScrollLink};
+use crate::components::ScrollLink;
 use crate::Route;
 
 const LOGO: Asset = asset!("/assets/img/logo.png");
@@ -35,7 +35,7 @@ pub fn Header() -> Element {
                     "aria-label": "Menu",
                     "aria-expanded": if open() { "true" } else { "false" },
                     onclick: move |_| open.set(!open()),
-                    Icon { name: if open() { "close".to_string() } else { "menu".to_string() }, size: 22 }
+                    span { class: "burger" }
                 }
             }
         }

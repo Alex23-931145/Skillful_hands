@@ -8,8 +8,7 @@ use crate::Route;
 pub fn Footer() -> Element {
     let services = [
         ("Renovations", "renovations"),
-        ("Outdoor Living", "outdoor-living"),
-        ("Cottages & Cabins", "cottages-cabins"),
+        ("Decks, BBQ & Pergola", "outdoor-living"),
         ("Landscaping", "landscaping"),
     ];
 
