@@ -185,17 +185,24 @@ fn Owners() -> Element {
             div { class: "wrap",
                 div { class: "sec-head",
                     div { class: "sec-head__left",
-                        span { class: "sec-eyebrow", "MEET THE FOUNDER" }
-                        h2 { class: "sec-title", "Meet Aleksandr, founder of Skillful Hands" }
+                        span { class: "sec-eyebrow", "ABOUT US" }
+                        h2 { class: "sec-title", "About Skillful Hands Solutions LTD" }
                     }
-                    p { class: "sec-note", "Hands-on craftsmanship and a commitment to doing the job right." }
+                    p { class: "sec-note", "Custom construction built on hard work, honesty, and quality craftsmanship." }
                 }
                 div { class: "owners",
-                    OwnerCard {
-                        name: "Aleksandr Dudchenko",
-                        role: "Owner & Founder",
-                        bio: "Aleksandr Dudchenko is the founder of Skillful Hands Solutions LTD. He specializes in custom construction, renovations, landscaping, and outdoor living projects, with a strong focus on quality craftsmanship and customer satisfaction.",
-                        img: FOUNDER_IMG.to_string(),
+                    div { class: "owner-card owner-card--founder",
+                        img { class: "owner-card__photo", src: "{FOUNDER_IMG}", alt: "Aleksandr Dudchenko" }
+                        div { class: "owner-card__body",
+                            h3 { class: "owner-card__name", "Aleksandr Dudchenko" }
+                            div { class: "owner-card__role", "Owner & Founder" }
+                            p { class: "owner-card__bio", "My name is Aleksandr Dudchenko, and I am the founder of Skillful Hands Solutions LTD." }
+                            p { class: "owner-card__bio", "I was born and raised in Ukraine in a farming family, where I learned the value of hard work, honesty, and dedication from an early age. Before immigrating to Canada, I studied Psychology at university in Ukraine." }
+                            p { class: "owner-card__bio", "After moving to Canada, I lived in Saskatchewan, where I worked in the agricultural, oil, and construction industries. It was there that I founded a company specializing in agricultural fencing, which continues to operate successfully to this day. This experience helped me develop strong practical skills, discipline, and a deep understanding of project management and teamwork." }
+                            p { class: "owner-card__bio", "After five years in Saskatchewan, I relocated to British Columbia and discovered my true passion for custom construction. In 2024, I founded Skillful Hands Solutions LTD with the goal of creating unique, high-quality projects built to stand the test of time." }
+                            p { class: "owner-card__bio", "Today, I lead a team of experienced and dedicated professionals who successfully deliver projects of all sizes and levels of complexity. From home renovations and outdoor living spaces to custom cottages, landscaping, and waterfront projects, we are committed to quality craftsmanship, attention to detail, and complete customer satisfaction. We approach every project with responsibility, professionalism, and genuine passion for our work." }
+                            p { class: "owner-card__bio", "At Skillful Hands Solutions LTD, we believe that construction is more than simply building structures. It is about creating comfortable, functional, and beautiful spaces that people can enjoy for years to come. For our team, no project is too challenging — every project is completed with dedication, professionalism, and pride in our craftsmanship." }
+                        }
                     }
                 }
             }
