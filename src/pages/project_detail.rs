@@ -201,14 +201,6 @@ fn all_projects() -> Vec<ProjectData> {
     vec![rustic_utility_room(), waterfront_bbq(), island_retreat()]
 }
 
-/// (slug, подпись, фото) для плиток в секции Projects на главной.
-pub fn project_tiles() -> Vec<(&'static str, &'static str, String)> {
-    all_projects()
-        .into_iter()
-        .map(|p| (p.slug, p.chip, p.hero_img))
-        .collect()
-}
-
 /// (slug, подпись, фото) одного проекта — для кросс-ссылок со страниц услуг.
 pub fn project_card(slug: &str) -> Option<(&'static str, &'static str, String)> {
     all_projects()

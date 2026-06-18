@@ -25,7 +25,6 @@ pub fn Header() -> Element {
                     nav { class: "nav",
                         Link { to: Route::Home {}, onclick: close, "Home" }
                         Link { to: Route::Services {}, onclick: close, "Services" }
-                        ScrollLink { target: "projects", onnav: close, "Projects" }
                         ScrollLink { target: "about", onnav: close, "About Us" }
                     }
                     ScrollLink { target: "contact", class: "btn header__cta", onnav: close, "Contact Now" }

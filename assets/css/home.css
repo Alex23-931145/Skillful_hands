@@ -91,6 +91,41 @@
 .service-cta__desc { font-size: 15px; line-height: 1.5; color: var(--text-on-dark-muted); margin-top: 14px; }
 .service-cta__btn { align-self: flex-start; padding: 12px 18px; }
 
+/* ---------- Work / Services cards (объединённая секция OUR WORK) ---------- */
+.work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.work-card {
+  display: flex; flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.work-card:hover { border-color: var(--leaf); transform: translateY(-4px); }
+.work-card__photo {
+  height: 210px;
+  background-size: cover; background-position: center;
+  background-color: var(--sand);
+}
+.work-card__body { display: flex; flex-direction: column; gap: 10px; padding: 24px; flex: 1; }
+.work-card__title { font-family: var(--font-display); font-size: 23px; font-weight: 600; color: var(--text-primary); }
+.work-card__desc { font-size: 15px; line-height: 1.5; color: var(--text-secondary); flex: 1; }
+.work-card__link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--leaf); margin-top: 4px; }
+.work-card__link svg { width: 15px; height: 15px; }
+
+.work-cta {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap;
+  background: var(--forest);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+}
+@media (max-width: 980px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) {
+  .work-grid { grid-template-columns: 1fr; }
+  .work-cta { flex-direction: column; align-items: flex-start; }
+}
+
 /* ---------- Why Us values + stats (C5Ccj) ---------- */
 .values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
 .value-card { display: flex; flex-direction: column; gap: 14px; }
@@ -159,9 +194,11 @@ a.google-badge:hover { border-color: var(--leaf); background: #ffffff08; }
 /* ---------- CTA band (GeAR4) ---------- */
 .cta-band {
   display: flex; justify-content: center;
-  padding: 64px var(--pad-x);
+  padding: 96px var(--pad-x);
   /* background-image задаётся inline в home.rs через asset!() (base-path-safe) */
   background-size: cover; background-position: center;
+  /* Параллакс: фон зафиксирован к вьюпорту, контент проходит поверх при скролле. */
+  background-attachment: fixed;
 }
 .cta-band__inner { width: 760px; max-width: 100%; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; }
 .cta-band__headline { font-family: var(--font-display); font-size: clamp(32px, 5vw, 48px); font-weight: 600; line-height: 1.1; color: var(--text-on-dark); }
@@ -169,6 +206,11 @@ a.google-badge:hover { border-color: var(--leaf); background: #ffffff08; }
 .cta-band__btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; padding-top: 10px; }
 
 /* ---------- Responsive ---------- */
+/* На сенсорных/узких экранах background-attachment: fixed багует (Safari iOS) —
+   откатываем на обычный фон, параллакс остаётся только на десктопе. */
+@media (max-width: 860px) {
+  .cta-band { background-attachment: scroll; padding: 64px var(--pad-x); }
+}
 @media (max-width: 980px) {
   .gallery-top { grid-template-columns: 1fr; height: auto; }
   .gallery-top .tile--big { height: 320px; }

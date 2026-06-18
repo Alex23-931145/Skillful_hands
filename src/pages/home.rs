@@ -1,7 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::components::{ContactForm, Icon, ReviewCard, ScrollLink, ServiceCard};
-use crate::pages::project_tiles;
+use crate::components::{ContactForm, Icon, ReviewCard, ScrollLink};
 use crate::Route;
 
 // Hero-фон — реальное фото объекта. Через asset!(), чтобы base_path
@@ -13,14 +12,18 @@ const CTA_IMG: Asset = asset!("/assets/img/foto_web/island-retreat-exterior-afte
 // Профиль компании в Google Maps (живые отзывы). Бейдж и CTA ведут сюда.
 const GOOGLE_REVIEWS_URL: &str = "https://maps.app.goo.gl/9NdFEvng8LDeybFVA";
 
+// Фото-обложки 3 категорий (= hero соответствующих услуг, выбраны клиентом).
+const SVC_RENO_IMG: Asset = asset!("/assets/img/foto_web/island-retreat-interior-after-22.jpg");
+const SVC_DECK_IMG: Asset = asset!("/assets/img/foto_web/bbq-area-after-08.jpg");
+const SVC_LAND_IMG: Asset = asset!("/assets/img/foto_web/landscaping-01.jpg");
+
 /// Лендинг (Pencil C5tVy «Sweet Yards Landing» → ребренд Skillful Hands).
 #[component]
 pub fn Home() -> Element {
     rsx! {
         main {
             Hero {}
-            Projects {}
-            ServicesSection {}
+            WorkServices {}
             WhyUs {}
             Owners {}
             Testimonials {}
@@ -55,99 +58,55 @@ fn Hero() -> Element {
     }
 }
 
-// ---------- Projects (GpsRO) ----------
-// Плитка проекта → переход на /projects/:slug (детальная страница-кейс).
+// ---------- Work / Services (объединённая секция) ----------
+// 3 категории-услуги как фото-карточки → /services/:slug (там галерея работ).
+// Заменяет прежние секции Projects + ServicesSection. id="projects" сохранён,
+// чтобы ссылка «Projects» в футере вела сюда.
 #[component]
-fn ProjectTile(slug: String, label: String, img: String, #[props(default = false)] big: bool) -> Element {
+fn WorkServices() -> Element {
+    let services = [
+        ("Renovations", "Interiors, kitchens, baths, and complete home renovations.", "renovations", SVC_RENO_IMG),
+        ("Decks, BBQ & Pergola", "Custom decks, BBQ areas, pergolas, and patio zones.", "outdoor-living", SVC_DECK_IMG),
+        ("Landscaping", "Property and waterfront landscaping. New photos coming soon.", "landscaping", SVC_LAND_IMG),
+    ];
     rsx! {
-        Link {
-            to: Route::ProjectDetail { slug },
-            class: if big { "tile tile--big" } else { "tile" },
-            style: "background-image:url('{img}')",
-            span { class: "tile__chip", "{label}" }
-        }
-    }
-}
-
-#[component]
-fn Projects() -> Element {
-    // 3 реальных проекта (slug, подпись, фото) из project_detail.rs.
-    // Раскладка big+2: первый — крупный, остальные два — в правой колонке.
-    let tiles = project_tiles();
-    rsx! {
-        section { id: "projects", class: "home-section home-section--surface",
+        section { id: "projects", class: "home-section home-section--bg",
             div { class: "wrap",
                 div { class: "sec-head",
                     div { class: "sec-head__left",
                         span { class: "sec-eyebrow", "OUR WORK" }
-                        h2 { class: "sec-title", "See some of our past projects" }
+                        h2 { class: "sec-title", "See what we build" }
                     }
+                    p { class: "sec-note", "Three things we do — tap any to see the full gallery of real projects." }
                 }
-                div { class: "gallery-top",
-                    if let Some((slug , label , img)) = tiles.first() {
-                        ProjectTile {
-                            big: true,
-                            slug: slug.to_string(),
-                            label: label.to_string(),
-                            img: img.clone(),
-                        }
-                    }
-                    div { class: "gallery-top__right",
-                        for (slug , label , img) in tiles.iter().skip(1) {
-                            ProjectTile {
-                                key: "{slug}",
-                                slug: slug.to_string(),
-                                label: label.to_string(),
-                                img: img.clone(),
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-// ---------- Services (MMmfm) ----------
-#[component]
-fn ServicesSection() -> Element {
-    let services = [
-        ("hammer", "Renovations", "Interior, exterior, and complete home renovations and restoration — with custom design and planning.", "renovations"),
-        ("trees", "Decks, BBQ & Pergola", "Custom decks, BBQ areas, pergolas, and patio zones built for durability, function, and relaxed outdoor living.", "outdoor-living"),
-        ("leaf", "Landscaping", "Landscaping and property improvement for residential and waterfront properties.", "landscaping"),
-    ];
-    rsx! {
-        section { id: "services", class: "home-section home-section--bg",
-            div { class: "wrap",
-                div { class: "sec-head",
-                    div { class: "sec-head__left",
-                        span { class: "sec-eyebrow", "WHAT WE DO" }
-                        h2 { class: "sec-title", "Custom construction, one trusted team" }
-                    }
-                    p { class: "sec-note", "From renovations to outdoor living — one local crew that does it all on the Sunshine Coast." }
-                }
-                div { class: "service-grid",
-                    for (icon , title , desc , slug) in services {
-                        ServiceCard {
+                div { class: "work-grid",
+                    for (title , desc , slug , img) in services {
+                        Link {
                             key: "{slug}",
-                            icon: icon.to_string(),
-                            title: title.to_string(),
-                            desc: desc.to_string(),
-                            slug: slug.to_string(),
-                        }
-                    }
-                    // CTA-карточка вместо 6-й услуги
-                    div { class: "service-cta",
-                        div {
-                            h3 { class: "service-cta__title", "Not sure where to start?" }
-                            p { class: "service-cta__desc",
-                                "Tell us about your project and we'll map out a plan that fits your space and budget."
+                            to: Route::ServiceDetail { slug: slug.to_string() },
+                            class: "work-card",
+                            div { class: "work-card__photo", style: "background-image:url({img})" }
+                            div { class: "work-card__body",
+                                h3 { class: "work-card__title", "{title}" }
+                                p { class: "work-card__desc", "{desc}" }
+                                span { class: "work-card__link",
+                                    "View work"
+                                    Icon { name: "arrow-right".to_string(), size: 15 }
+                                }
                             }
                         }
-                        ScrollLink { target: "contact", class: "btn service-cta__btn",
-                            "Book a consult"
-                            Icon { name: "arrow-right".to_string(), size: 16 }
+                    }
+                }
+                div { class: "work-cta",
+                    div {
+                        h3 { class: "service-cta__title", "Not sure where to start?" }
+                        p { class: "service-cta__desc",
+                            "Tell us about your project and we'll map out a plan that fits your space and budget."
                         }
+                    }
+                    ScrollLink { target: "contact", class: "btn service-cta__btn",
+                        "Book a consult"
+                        Icon { name: "arrow-right".to_string(), size: 16 }
                     }
                 }
             }
@@ -297,7 +256,7 @@ fn CtaBand() -> Element {
     rsx! {
         section {
             class: "cta-band",
-            style: "background-image: linear-gradient(0deg, #0a0907e6, #0a0907e6), url({CTA_IMG});",
+            style: "background-image: linear-gradient(0deg, #0a0907b3, #0a09078c), url({CTA_IMG});",
             div { class: "cta-band__inner",
                 span { class: "sec-eyebrow sec-eyebrow--soft", "LET'S BUILD SOMETHING GREAT" }
                 h2 { class: "cta-band__headline", "Ready to start your project?" }

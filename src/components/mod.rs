@@ -7,7 +7,6 @@ mod icons;
 mod logo_mark;
 mod review_card;
 mod scroll_link;
-mod service_card;
 
 pub use contact_form::ContactForm;
 pub use cookie_banner::CookieBanner;
@@ -17,4 +16,3 @@ pub use icons::Icon;
 pub use logo_mark::Logo;
 pub use review_card::ReviewCard;
 pub use scroll_link::ScrollLink;
-pub use service_card::ServiceCard;

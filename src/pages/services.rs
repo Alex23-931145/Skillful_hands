@@ -26,7 +26,7 @@ fn ServicesHero() -> Element {
                     span { class: "svc-hero__eyebrow", "SERVICES" }
                     h1 { class: "svc-hero__title", "Our construction services" }
                     p { class: "svc-hero__sub",
-                        "From custom renovations to cottages, decks, and landscaping, Skillful Hands Solutions delivers quality craftsmanship across the Sunshine Coast and surrounding islands of British Columbia."
+                        "From renovations to decks, BBQ, and landscaping, Skillful Hands Solutions delivers quality craftsmanship across the Sunshine Coast and surrounding islands of British Columbia."
                     }
                 }
             }
@@ -45,21 +45,21 @@ fn ServicesList() -> Element {
             "Renovations",
             "renovations",
             "Professional renovation services for residential properties — interior, exterior, complete home renovations and restoration, plus custom design and planning.",
-            asset!("/assets/img/foto_web/island-retreat-interior-after-07.jpg").to_string(),
+            asset!("/assets/img/foto_web/island-retreat-interior-after-22.jpg").to_string(),
         ),
         (
             "02",
             "Decks, BBQ & Pergola",
             "outdoor-living",
             "Custom decks, BBQ areas, pergolas, and patio zones — built for durability, function, and relaxed outdoor living on the coast.",
-            asset!("/assets/img/foto_web/bbq-area-after-06.jpg").to_string(),
+            asset!("/assets/img/foto_web/bbq-area-after-08.jpg").to_string(),
         ),
         (
             "03",
             "Landscaping",
             "landscaping",
             "Landscaping and property improvement for residential and waterfront properties. New project photos coming soon.",
-            asset!("/assets/img/foto_web/scenery-01.jpg").to_string(),
+            asset!("/assets/img/foto_web/landscaping-01.jpg").to_string(),
         ),
     ];
     rsx! {
