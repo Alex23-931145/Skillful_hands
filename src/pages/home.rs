@@ -11,6 +11,8 @@ const HERO_IMG: Asset = asset!("/assets/img/hero.jpg");
 const CTA_IMG: Asset = asset!("/assets/img/foto_web/island-retreat-exterior-after-07.jpg");
 // Профиль компании в Google Maps (живые отзывы). Бейдж и CTA ведут сюда.
 const GOOGLE_REVIEWS_URL: &str = "https://maps.app.goo.gl/9NdFEvng8LDeybFVA";
+// Личное фото основателя (из HEIC → web-JPG). Показываем целиком, без обрезки.
+const FOUNDER_IMG: Asset = asset!("/assets/img/founder.jpg");
 
 // Фото-обложки 3 категорий (= hero соответствующих услуг, выбраны клиентом).
 const SVC_RENO_IMG: Asset = asset!("/assets/img/foto_web/island-retreat-interior-after-22.jpg");
@@ -166,7 +168,7 @@ fn WhyUs() -> Element {
 fn OwnerCard(name: String, role: String, bio: String, img: String) -> Element {
     rsx! {
         div { class: "owner-card owner-card--founder",
-            div { class: "owner-card__photo", style: "background-image:url('{img}')" }
+            img { class: "owner-card__photo", src: "{img}", alt: "{name}" }
             div { class: "owner-card__body",
                 h3 { class: "owner-card__name", "{name}" }
                 div { class: "owner-card__role", "{role}" }
@@ -193,7 +195,7 @@ fn Owners() -> Element {
                         name: "Aleksandr Dudchenko",
                         role: "Owner & Founder",
                         bio: "Aleksandr Dudchenko is the founder of Skillful Hands Solutions LTD. He specializes in custom construction, renovations, landscaping, and outdoor living projects, with a strong focus on quality craftsmanship and customer satisfaction.",
-                        img: "https://images.unsplash.com/photo-1602752709993-9ab17ac8cf0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+                        img: FOUNDER_IMG.to_string(),
                     }
                 }
             }
