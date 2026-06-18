@@ -153,19 +153,87 @@
   border-radius: var(--radius-lg); overflow: hidden;
 }
 .owner-card__photo { display: block; width: 100%; height: auto; background-color: var(--sand); }
+.owner-card__photo-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  text-align: left;
+  flex: none;
+}
+.owner-card__photo-button:focus-visible { outline: 3px solid var(--leaf); outline-offset: 4px; }
+.owner-card__photo-hint {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  padding: 8px 12px;
+  border-radius: 100px;
+  background: #0a0907cc;
+  color: var(--text-on-dark);
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+.owner-card__photo-button:hover .owner-card__photo-hint,
+.owner-card__photo-button:focus-visible .owner-card__photo-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Single founder card — фото слева целиком (без обрезки), текст справа по центру. */
 .owner-card--founder { flex-direction: row; align-items: center; gap: 4px; }
-.owner-card--founder .owner-card__photo { width: 360px; max-width: 45%; height: auto; flex: none; align-self: center; }
+.owner-card--founder .owner-card__photo,
+.owner-card--founder .owner-card__photo-button { width: 360px; max-width: 45%; height: auto; flex: none; align-self: center; }
 .owner-card--founder .owner-card__body { justify-content: center; }
 @media (max-width: 760px) {
   .owner-card--founder { flex-direction: column; align-items: stretch; }
-  .owner-card--founder .owner-card__photo { width: 100%; max-width: 100%; height: auto; }
+  .owner-card--founder .owner-card__photo,
+  .owner-card--founder .owner-card__photo-button { width: 100%; max-width: 100%; height: auto; }
 }
 .owner-card__body { display: flex; flex-direction: column; gap: 10px; padding: 30px; }
 .owner-card__name { font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--text-primary); }
 .owner-card__role { font-size: 14px; font-weight: 600; letter-spacing: 0.5px; color: var(--leaf); }
 .owner-card__bio { font-size: 15px; line-height: 1.55; color: var(--text-secondary); }
+
+.photo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  background: rgba(5, 8, 6, 0.88);
+}
+.photo-modal__img {
+  display: block;
+  max-width: min(1100px, 94vw);
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+.photo-modal__close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #ffffff55;
+  border-radius: 100px;
+  background: #0a0907cc;
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+.photo-modal__close:hover { background: #ffffff22; }
 
 /* ---------- Testimonials (yGEU9) ---------- */
 .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
