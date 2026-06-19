@@ -21,8 +21,6 @@ pub enum Route {
     #[layout(Layout)]
     #[route("/")]
     Home {},
-    #[route("/about")]
-    About {},
     #[route("/services")]
     Services {},
     #[route("/services/:slug")]
@@ -62,10 +60,7 @@ fn Layout() -> Element {
 
     rsx! {
         Header {}
-        match route {
-            Route::About {} => rsx! { Home {} },
-            _ => rsx! { Outlet::<Route> {} },
-        }
+        Outlet::<Route> {}
         Footer {}
         CookieBanner {}
     }
